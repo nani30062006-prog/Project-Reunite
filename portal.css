@@ -1,0 +1,314 @@
+/* ================================= */
+/* PROJECT REUNITE PORTAL */
+/* ================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.85),
+    rgba(0,0,0,0.90)),
+    url("background.jpg");
+
+    background-size:cover;
+    background-position:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* TOP BAR */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.project-name{
+    font-size:32px;
+    font-weight:bold;
+    color:#ff3c3c;
+
+    text-shadow:
+    0 0 10px red,
+    0 0 30px red;
+}
+
+.system-status{
+    display:flex;
+    gap:20px;
+    color:#00ff66;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* MAIN LAYOUT */
+
+.portal-container{
+    width:95%;
+    margin:20px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 2fr 1fr;
+
+    gap:20px;
+}
+
+/* LEFT PANEL */
+
+.left-panel,
+.right-panel{
+
+    background:
+    rgba(0,0,0,0.55);
+
+    border:2px solid #ff3333;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+    0 0 20px red;
+}
+
+.left-panel h2,
+.right-panel h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#00ff66;
+}
+
+/* STATUS CARD */
+
+.status-card{
+
+    margin:15px 0;
+
+    padding:15px;
+
+    border:1px solid #00ff66;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    color:#00ff66;
+
+    background:
+    rgba(0,255,100,0.08);
+
+    transition:.3s;
+}
+
+.status-card:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 20px #00ff66;
+}
+
+/* CENTER FORM */
+
+.form-panel{
+
+    background:
+    rgba(0,0,0,0.60);
+
+    border:2px solid #ff3333;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:
+    0 0 25px red;
+}
+
+.form-panel h1{
+
+    text-align:center;
+
+    color:#ff4444;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 15px red;
+}
+
+/* GRID */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:15px;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    color:white;
+
+    border:1px solid #444;
+}
+
+textarea{
+
+    margin-top:15px;
+
+    resize:none;
+}
+
+/* BUTTON */
+
+.search-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ff3333,
+    #ff9900
+    );
+
+    box-shadow:
+    0 0 20px red;
+
+    transition:.3s;
+}
+
+.search-btn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 30px red;
+}
+
+/* RIGHT PANEL */
+
+.mini-card{
+
+    margin-top:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    border:1px solid #00ff66;
+
+    background:
+    rgba(0,255,100,0.08);
+
+    color:#00ff66;
+}
+
+.mini-card h3{
+
+    margin-top:10px;
+
+    font-size:30px;
+}
+
+/* FLOATING PARTICLES */
+
+.particle{
+
+    position:absolute;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ff3333;
+
+    box-shadow:
+    0 0 12px red;
+
+    animation:
+    float 10s linear infinite;
+}
+
+.p1{left:10%;top:90%;}
+.p2{left:25%;top:85%;}
+.p3{left:50%;top:95%;}
+.p4{left:75%;top:88%;}
+.p5{left:90%;top:92%;}
+
+@keyframes float{
+
+    from{
+        transform:
+        translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-700px);
+        opacity:0;
+    }
+}
+.records-btn{
+    background:#111;
+    color:#00ff66;
+    border:2px solid #00ff66;
+    padding:8px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 0 10px #00ff66;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Reunite - Investigation Portal</title>
+
+<link rel="stylesheet" href="portal.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- TOP STATUS BAR -->
+
+<div class="top-bar">
+
+    <div class="project-name">
+        PROJECT REUNITE
+    </div>
+    <button id="recordsBtn" class="records-btn">
+    📁 SAVED CASES
+</button>
+
+    <div class="system-status">
+        <span>🟢 AWS CLOUD ACTIVE</span>
+        <span>🟢 DATABASE ONLINE</span>
+        <span>🟢 AI ENGINE READY</span>
+        <span id="clock">00:00:00</span>
+    </div>
+
+</div>
+
+
+<!-- MAIN CONTAINER -->
+
+<div class="portal-container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="left-panel">
+
+        <h2>INVESTIGATION PORTAL</h2>
+
+        <div class="status-card">
+            <i class="fas fa-cloud"></i>
+            AWS CLOUD CONNECTED
+        </div>
+
+        <div class="status-card">
+            <i class="fas fa-database"></i>
+            DATABASE ONLINE
+        </div>
+
+        <div class="status-card">
+            <i class="fas fa-microchip"></i>
+            AI ENGINE ACTIVE
+        </div>
+
+        <div class="status-card">
+            <i class="fas fa-shield-alt"></i>
+            SYSTEM SECURE
+        </div>
+
+    </div>
+
+
+    <!-- CENTER FORM -->
+
+    <div class="form-panel">
+
+        <h1>CASE REGISTRATION</h1>
+
+        <div class="form-grid">
+
+<input id="caseId" type="text"
+placeholder="Case ID">
+
+<input id="personName" type="text"
+placeholder="Missing Person Name">
+
+<input id="age" type="number"
+placeholder="Age">
+
+<select id="gender">
+    <option>Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+
+<input id="contact" type="tel"
+placeholder="Contact Number">
+
+<input id="location" type="text"
+placeholder="Last Seen Location">
+
+<input id="missingDate" type="date">
+
+<input id="photo" type="file">
+
+</div>
+
+<textarea id="info"
+placeholder="Identification Marks / Additional Information">
+</textarea>
+
+        <button id="saveBtn" class="search-btn">
+    SAVE RECORD
+</button>
+
+<button id="searchMatchBtn" class="search-btn">
+    SEARCH MATCH
+</button>
+    </div>
+
+
+    <!-- RIGHT PANEL -->
+
+    <div class="right-panel">
+
+        <h2>LIVE STATUS</h2>
+
+        <div class="mini-card">
+            FACE MATCH
+            <h3 id="matchPercent">
+                72%
+            </h3>
+        </div>
+
+        <div class="mini-card">
+            ACTIVE CASES
+            <h3>124</h3>
+        </div>
+
+        <div class="mini-card">
+            DATABASE RECORDS
+            <h3>12,450</h3>
+        </div>
+
+        <div class="mini-card">
+            SUCCESS RATE
+            <h3>96.8%</h3>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FLOATING PARTICLES -->
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+
+
+<script src="portal.js"></script>
+
+</body>
+</html>

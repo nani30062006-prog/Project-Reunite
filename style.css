@@ -1,0 +1,575 @@
+/* ================================= */
+/* PROJECT REUNITE MAIN CSS */
+/* ================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.90)
+    ),
+    url("background.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    color:white;
+}
+
+/* ================================= */
+/* HEADER */
+/* ================================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 40px;
+}
+
+.mission-control{
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    color:#ff2a2a;
+
+    text-shadow:
+    0 0 5px red,
+    0 0 10px red;
+}
+
+.top-status{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+    color:#00ff66;
+
+    font-size:14px;
+}
+
+.top-status span{
+
+    text-shadow:
+    0 0 10px #00ff66;
+}
+
+/* ================================= */
+/* MAIN TITLE */
+/* ================================= */
+
+.container{
+
+    position:absolute;
+
+    top:180px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+    width:100%;
+}
+
+.system-title{
+
+    color:white;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+}
+
+.container h1{
+
+    font-size:80px;
+
+    color:#ff2a2a;
+
+    text-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 15px red;
+}
+
+.tagline{
+
+    margin-top:15px;
+
+    font-size:22px;
+
+    color:white;
+}
+
+/* ================================= */
+/* BUTTON */
+/* ================================= */
+
+.portal-btn{
+
+    margin-top:30px;
+
+    padding:18px 40px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#ff2a2a;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 20px red;
+}
+
+.portal-btn:hover{
+
+    transform:scale(1.05);
+}
+
+/* ================================= */
+/* INFO CARDS */
+/* ================================= */
+
+.cards{
+
+    position:absolute;
+
+    bottom:120px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:70%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+.card{
+
+    background:
+    rgba(0,0,0,0.6);
+
+    border:
+    2px solid #ff2a2a;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 15px red;
+}
+
+.card i{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+    color:#00ff66;
+}
+
+.card p{
+
+    color:#00ff66;
+}/* ================================= */
+/* PROJECT REUNITE */
+/* ================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.92)),
+    url("background.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+    overflow:hidden;
+    color:white;
+}
+
+/* ================================= */
+/* HEADER */
+/* ================================= */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.mission-control{
+    color:#ff2a2a;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:
+    0 0 10px red,
+    0 0 25px red;
+}
+
+.top-status{
+    display:flex;
+    gap:20px;
+    color:#00ff66;
+    font-size:14px;
+}
+
+.top-status span{
+    text-shadow:0 0 10px #00ff66;
+}
+
+/* ================================= */
+/* MAIN TITLE */
+/* ================================= */
+
+.container{
+    position:absolute;
+    top:150px;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    width:100%;
+}
+
+.system-title{
+    font-size:18px;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.container h1{
+    font-size:80px;
+    color:#ff2a2a;
+    text-shadow:
+    0 0 15px red,
+    0 0 40px red,
+    0 0 80px red;
+}
+
+.tagline{
+    margin-top:15px;
+    font-size:22px;
+}
+
+/* ================================= */
+/* BUTTON */
+/* ================================= */
+
+.portal-btn{
+    margin-top:30px;
+    padding:18px 40px;
+    border:none;
+    border-radius:40px;
+    background:#ff2a2a;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 20px red;
+    transition:.3s;
+}
+
+.portal-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ================================= */
+/* CARDS */
+/* ================================= */
+
+.cards{
+    position:absolute;
+    bottom:80px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    background:rgba(0,0,0,0.65);
+    border:2px solid #ff2a2a;
+    border-radius:15px;
+    padding:10px;
+    height:90px;
+    text-align:center;
+
+    box-shadow:
+    0 0 15px red;
+}
+
+.card i{
+    color:#00ff66;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#00ff66;
+}
+
+/* ================================= */
+/* STATUS DOTS */
+/* ================================= */
+
+.status-dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    position:fixed;
+    animation:blink 1s infinite;
+}
+
+.green-dot{
+    top:20px;
+    right:20px;
+    background:#00ff66;
+    box-shadow:0 0 15px #00ff66;
+}
+
+.red-dot{
+    top:20px;
+    right:45px;
+    background:#ff2a2a;
+    box-shadow:0 0 15px red;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0.3;
+    }
+}/* ================================= */
+/* RADAR SYSTEM */
+/* ================================= */
+
+.radar-section{
+    position:absolute;
+    left:40px;
+    top:200px;
+    text-align:center;
+}
+
+.radar-section h3{
+    color:#00ff66;
+    margin-bottom:15px;
+}
+
+.radar{
+    width:160px;
+    height:160px;
+    border:2px solid #00ff66;
+    border-radius:50%;
+    position:relative;
+    box-shadow:0 0 20px #00ff66;
+}
+
+.radar-ring{
+    position:absolute;
+    border:1px solid rgba(0,255,102,0.5);
+    border-radius:50%;
+}
+
+.ring1{
+    width:50px;
+    height:50px;
+    top:55px;
+    left:55px;
+}
+
+.ring2{
+    width:100px;
+    height:100px;
+    top:30px;
+    left:30px;
+}
+
+.ring3{
+    width:160px;
+    height:160px;
+    top:0px;
+    left:0px;
+}
+
+.radar-sweep{
+    position:absolute;
+    width:80px;
+    height:1px;
+    background:#00ff66;
+    top:75px;
+    left:75px;
+    transform-origin:left center;
+    animation:rotateRadar 4s linear infinite;
+}
+
+@keyframes rotateRadar{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================================= */
+/* AI ACTIVITY GRAPH */
+/* ================================= */
+
+.ai-graph-section{
+    position:absolute;
+    right:50px;
+    top:150px;
+    text-align:center;
+}
+
+.ai-graph-section h3{
+    color:#00ff66;
+    margin-bottom:15px;
+}
+
+.activity-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:6px;
+    height:120px;
+}
+
+.activity-bars span{
+    width:12px;
+    background:#00ff66;
+    border-radius:5px;
+    animation:graphMove 1.2s infinite ease-in-out;
+}
+
+.activity-bars span:nth-child(1){height:30px;}
+.activity-bars span:nth-child(2){height:70px;}
+.activity-bars span:nth-child(3){height:50px;}
+.activity-bars span:nth-child(4){height:100px;}
+.activity-bars span:nth-child(5){height:40px;}
+.activity-bars span:nth-child(6){height:80px;}
+
+@keyframes graphMove{
+    50%{
+        transform:scaleY(1.5);
+    }
+}
+
+/* ================================= */
+/* WATER RIPPLE */
+/* ================================= */
+
+.ripple{
+    position:absolute;
+    left:50%;
+    top:260px;
+    transform:translateX(-50%);
+}
+
+.ripple span{
+    position:absolute;
+    width:60px;
+    height:60px;
+    border:2px solid rgba(255,0,0,0.5);
+    border-radius:50%;
+    animation:rippleWave 4s infinite;
+}
+
+.ripple span:nth-child(2){
+    animation-delay:1s;
+}
+
+.ripple span:nth-child(3){
+    animation-delay:2s;
+}
+
+@keyframes rippleWave{
+    from{
+        transform:scale(0.5);
+        opacity:1;
+    }
+    to{
+        transform:scale(5);
+        opacity:0;
+    }
+}
+
+/* ================================= */
+/* FLOATING PARTICLES */
+/* ================================= */
+
+.particle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:#ff2a2a;
+    border-radius:50%;
+    box-shadow:0 0 5px red;
+    animation:floatParticle 8s infinite linear;
+}
+
+.p1{left:10%;top:80%;}
+.p2{left:25%;top:60%;}
+.p3{left:50%;top:90%;}
+.p4{left:75%;top:70%;}
+.p5{left:90%;top:50%;}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-300px);
+        opacity:0;
+    }
+}
