@@ -1,221 +1,60 @@
-// =================================
-// LIVE CLOCK
-// =================================
+// ==============================================
+// PROJECT REUNITE — LANDING PAGE SCRIPT
+// ==============================================
 
-function updateClock(){
+document.addEventListener('DOMContentLoaded', () => {
 
-    const clock =
-    document.getElementById("clock");
+    // --- Count-Up Animation for Stats ---
+    const statNumbers = document.querySelectorAll('.stats__number[data-target]');
+    let statsAnimated = false;
 
-    if(clock){
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !statsAnimated) {
+                statsAnimated = true;
+                statNumbers.forEach(el => {
+                    const target = parseInt(el.dataset.target);
+                    animateCounter(el, target, 2200);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
 
-        const now =
-        new Date();
-
-        clock.innerHTML =
-        now.toLocaleTimeString();
+    const statsSection = document.getElementById('stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
     }
-}
-
-setInterval(updateClock,1000);
-
-updateClock();
 
 
-// =================================
-// FACE MATCH PERCENTAGE
-// =================================
+    // --- Subtle System Status Pulse ---
+    const statusValues = document.querySelectorAll('.sys-status__value--ok');
+    if (statusValues.length > 0) {
+        setInterval(() => {
+            const random = statusValues[Math.floor(Math.random() * statusValues.length)];
+            random.style.opacity = '0.5';
+            setTimeout(() => {
+                random.style.opacity = '1';
+            }, 600);
+        }, 3000);
+    }
 
-const matchValues = [
 
-    "72%",
-    "84%",
-    "91%",
-    "98%",
-    "MATCH FOUND"
+    // --- Smooth Reveal on Nav Scroll ---
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
 
-];
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
 
-let matchIndex = 0;
-
-setInterval(()=>{
-
-    const match =
-    document.getElementById("matchPercent");
-
-    if(match){
-
-        match.innerHTML =
-        matchValues[matchIndex];
-
-        matchIndex++;
-
-        if(matchIndex >= matchValues.length){
-
-            matchIndex = 0;
+        if (currentScroll > 60) {
+            nav.style.background = 'rgba(17, 17, 17, 0.95)';
+            nav.style.backdropFilter = 'blur(16px)';
+        } else {
+            nav.style.background = 'var(--bg-secondary)';
+            nav.style.backdropFilter = 'blur(12px)';
         }
-    }
 
-},2000);
+        lastScroll = currentScroll;
+    }, { passive: true });
 
-
-// =================================
-// RANDOM CARD GLOW
-// =================================
-
-const cards =
-document.querySelectorAll(".card");
-
-setInterval(()=>{
-
-    const card =
-    cards[Math.floor(
-        Math.random()*cards.length
-    )];
-
-    if(card){
-
-        card.style.boxShadow =
-        "0 0 35px #00ff66";
-
-        setTimeout(()=>{
-
-            card.style.boxShadow =
-            "0 0 15px red";
-
-        },700);
-    }
-
-},2000);
-
-
-// =================================
-// STATUS DOT BLINK
-// =================================
-
-const dots =
-document.querySelectorAll(".status-dot");
-
-setInterval(()=>{
-
-    dots.forEach(dot=>{
-
-        dot.style.opacity =
-        Math.random() > 0.5
-        ? "1"
-        : "0.3";
-
-    });
-
-},1000);
-
-
-// =================================
-// PORTAL BUTTON
-// =================================
-
-const portalBtn =
-document.querySelector(".portal-btn");
-
-if(portalBtn){
-
-    portalBtn.addEventListener("click",()=>{
-
-       window.location.href = "portal.html";
-
-    });
-
-}
-
-
-// =================================
-// AI GRAPH RANDOM HEIGHTS
-// =================================
-
-const bars =
-document.querySelectorAll(
-".activity-bars span"
-);
-
-setInterval(()=>{
-
-    bars.forEach(bar=>{
-
-        const randomHeight =
-        Math.floor(
-            Math.random()*100
-        ) + 20;
-
-        bar.style.height =
-        randomHeight + "px";
-
-    });
-
-},800);
-
-
-// =================================
-// LIVE FEED TICKER
-// =================================
-
-const ticker =
-document.querySelector(
-".ticker-text"
-);
-
-const messages = [
-
-"AI ENGINE ACTIVE",
-"DATABASE ONLINE",
-"AWS CLOUD CONNECTED",
-"FACE MATCHING RUNNING",
-"SYSTEM SECURE",
-"ENCRYPTION ENABLED",
-"PROJECT REUNITE READY"
-
-];
-
-let tickerIndex = 0;
-
-setInterval(()=>{
-
-    if(ticker){
-
-        ticker.innerHTML =
-        messages[tickerIndex];
-
-        tickerIndex++;
-
-        if(
-        tickerIndex >=
-        messages.length
-        ){
-
-            tickerIndex = 0;
-        }
-    }
-
-},2500);
-
-
-
-// LIVE CLOCK
-
-function updateClock() {
-
-    const clock =
-    document.getElementById("clock");
-
-    if (clock) {
-
-        const now = new Date();
-
-        clock.innerHTML =
-        now.toLocaleTimeString();
-
-    }
-}
-
-updateClock();
-
-setInterval(updateClock, 1000);
+});

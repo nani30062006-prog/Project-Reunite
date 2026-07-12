@@ -1,48 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Project Reunite - Saved Cases</title>
-
-<link rel="stylesheet" href="records.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Reunite — View, search, edit, and manage registered missing person cases.">
+    <title>Saved Records — Project Reunite</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="records.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-<div class="top-bar">
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="mainNav">
+        <div class="nav__brand">
+            <a href="index.html" class="nav__logo">PROJECT <span>REUNITE</span></a>
+            <span class="nav__tag">Records</span>
+        </div>
 
-    <h1>PROJECT REUNITE</h1>
+        <div class="nav__links">
+            <a href="index.html" class="nav__link">Home</a>
+            <a href="portal.html" class="nav__link">Portal</a>
+            <a href="records.html" class="nav__link nav__link--active">Records</a>
+        </div>
 
-    <div class="status">
-        ● DATABASE ONLINE
+        <div class="nav__status">
+            <span class="status-dot"></span>
+            <span>System Online</span>
+            <span class="nav__divider">·</span>
+            <span class="nav__clock" id="clock">00:00:00</span>
+        </div>
+    </nav>
+
+
+    <!-- ===== PAGE HEADER ===== -->
+    <div class="records-header fade-in">
+        <div class="records-header__inner">
+            <div>
+                <h1 class="records-header__title">Case Records</h1>
+                <p class="records-header__subtitle">All registered missing person cases</p>
+            </div>
+            <div class="records-header__actions">
+                <span class="records-header__count" id="recordCount">0 records</span>
+                <a href="portal.html" class="btn btn--primary btn--sm">
+                    <i class="fas fa-plus"></i>
+                    New Case
+                </a>
+            </div>
+        </div>
     </div>
 
-</div>
 
-<div class="main-container">
-
-    <div class="header-box">
-
-        <h2>SAVED CASES DATABASE</h2>
-
-        <p>All registered missing person records are displayed below.</p>
-
+    <!-- ===== SEARCH & FILTER BAR ===== -->
+    <div class="search-bar fade-in fade-in--delay-1">
+        <div class="search-bar__inner">
+            <div class="search-bar__input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" class="search-bar__input" placeholder="Search by name, location, or case ID...">
+            </div>
+            <div class="search-bar__filters">
+                <select id="sortFilter" class="search-bar__select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="name">Name A–Z</option>
+                </select>
+                <select id="statusFilter" class="search-bar__select">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </div>
+        </div>
     </div>
 
-    <div id="recordsContainer" class="records-container">
 
-       
+    <!-- ===== RECORDS GRID ===== -->
+    <main class="records-main">
+        <div id="recordsContainer" class="records-grid">
+            <!-- Records loaded by JS -->
+        </div>
+    </main>
+
+
+    <!-- ===== EDIT MODAL ===== -->
+    <div class="modal-overlay" id="editModalOverlay">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Edit Case</h3>
+                <button class="modal__close" id="editModalClose">&times;</button>
+            </div>
+            <div class="modal__body" id="editModalBody">
+                <input type="hidden" id="editCaseId">
+
+                <div class="form-group">
+                    <label class="form-label" for="editPersonName">Person Name</label>
+                    <input type="text" id="editPersonName" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editAge">Age</label>
+                    <input type="number" id="editAge" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editGender">Gender</label>
+                    <select id="editGender" class="form-select">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editContact">Contact</label>
+                    <input type="tel" id="editContact" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editLocation">Location</label>
+                    <input type="text" id="editLocation" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editInfo">Additional Info</label>
+                    <textarea id="editInfo" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="editStatus">Status</label>
+                    <select id="editStatus" class="form-select">
+                        <option value="active">Active</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal__actions">
+                <button class="btn btn--secondary" id="editCancelBtn">Cancel</button>
+                <button class="btn btn--primary" id="editSaveBtn">
+                    <i class="fas fa-check"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
     </div>
 
-</div>
-
-<script src="records.js"></script>
-
+    <script src="shared.js"></script>
+    <script src="records.js"></script>
 </body>
-
 </html>

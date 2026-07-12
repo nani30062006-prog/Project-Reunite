@@ -1,288 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PROJECT REUNITE</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Reunite — AI-powered missing person identification system. Finding identities. Reuniting families.">
+    <title>Project Reunite — AI Missing Person System</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-<!-- ================================= -->
-<!-- PARTICLES -->
-<!-- ================================= -->
-
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
-
-<!-- ================================= -->
-<!-- BLINKING STATUS DOTS -->
-<!-- ================================= -->
-
-<div class="status-dot green-dot"></div>
-<div class="status-dot red-dot"></div>
-
-<!-- ================================= -->
-<!-- HEADER -->
-<!-- ================================= -->
-
-<header>
-
-<div class="mission-control">
-MISSION CONTROL
-</div>
-
-<div class="top-status">
-
-<span>
-<i class="fas fa-cloud"></i>
-AWS CONNECTED
-</span>
-
-<span>
-<i class="fas fa-database"></i>
-DATABASE ONLINE
-</span>
-
-<span>
-<i class="fas fa-microchip"></i>
-AI ACTIVE
-</span>
-
-<span id="clock">
-00:00:00
-</span>
-
-</div>
-
-</header>
-
-<!-- ================================= -->
-<!-- LEFT RADAR -->
-<!-- ================================= -->
-
-<div class="radar-section">
-
-<h3>RADAR SYSTEM</h3>
-
-<div class="radar">
-
-<div class="radar-ring ring1"></div>
-<div class="radar-ring ring2"></div>
-<div class="radar-ring ring3"></div>
-
-<div class="radar-sweep"></div>
-
-</div>
-
-</div>
-
-<!-- ================================= -->
-<!-- RIGHT AI GRAPH -->
-<!-- ================================= -->
-
-<div class="ai-graph-section">
-
-<h3>AI ACTIVITY</h3>
-
-<div class="activity-bars">
-
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-</div>
-
-<!-- ================================= -->
-<!-- WATER RIPPLE -->
-<!-- ================================= -->
-
-<div class="ripple">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-<!-- ================================= -->
-<!-- MAIN CONTENT -->
-<!-- ================================= -->
-
-<div class="container">
-
-<h3 class="system-title">
-AI POWERED MISSING PERSON
-IDENTIFICATION SYSTEM
-</h3>
-
-<h1>
-PROJECT REUNITE
-</h1>
-
-<p class="tagline">
-Finding Identities.
-Reuniting Families.
-</p>
-
-<a href="portal.html">
-    <button class="portal-btn">
-        ENTER INVESTIGATION PORTAL
-    </button>
-</a>
-
-</div>
-
-<!-- ================================= -->
-<!-- FACE MATCH PANEL -->
-<!-- ================================= -->
-
-<div class="face-match">
-
-<h4>FACE MATCH</h4>
-
-<div class="match-line"></div>
-
-<p id="matchPercent">
-98%
-</p>
-
-<span>
-MATCH FOUND
-</span>
-
-</div>
-
-<!-- ================================= -->
-<!-- AUDIO WAVE -->
-<!-- ================================= -->
-
-<div class="audio-wave">
-
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-<!-- ================================= -->
-<!-- GLOBAL DATA GRAPH -->
-<!-- ================================= -->
-
-<div class="global-graph">
-
-<h3>GLOBAL DATA GRAPH</h3>
-
-<div class="graph-area">
-
-<div class="graph-line"></div>
-
-</div>
-
-</div>
-
-<!-- ================================= -->
-<!-- INFO CARDS -->
-<!-- ================================= -->
-
-<div class="cards">
-
-<div class="card">
-<i class="fas fa-cloud"></i>
-<h2>AWS CLOUD</h2>
-<p>CONNECTED</p>
-</div>
-
-<div class="card">
-<i class="fas fa-database"></i>
-<h2>DATABASE</h2>
-<p>ONLINE</p>
-</div>
-
-<div class="card">
-<i class="fas fa-microchip"></i>
-<h2>AI ENGINE</h2>
-<p>ACTIVE</p>
-</div>
-
-<div class="card">
-<i class="fas fa-user-check"></i>
-<h2>FACE SCAN</h2>
-<p>READY</p>
-</div>
-
-<div class="card">
-<h2>1214</h2>
-<p>CASES</p>
-</div>
-
-<div class="card">
-<h2>324</h2>
-<p>MATCHES</p>
-</div>
-
-<div class="card">
-<h2>96.8%</h2>
-<p>SUCCESS RATE</p>
-</div>
-
-<div class="card">
-<i class="fas fa-location-dot"></i>
-<h2>32</h2>
-<p>CITIES</p>
-</div>
-
-</div>
-
-<!-- ================================= -->
-<!-- TARGET SCANNER -->
-<!-- ================================= -->
-
-<div class="target-scanner">
-
-<i class="fas fa-crosshairs"></i>
-
-</div>
-
-<!-- ================================= -->
-<!-- LIVE FEED -->
-<!-- ================================= -->
-
-<div class="ticker">
-
-<div class="ticker-">
-
-AI ENGINE ACTIVE •
-FACE MATCHING RUNNING •
-DATABASE ONLINE •
-AWS CLOUD CONNECTED •
-SYSTEM SECURE •
-ENCRYPTION ENABLED •
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="mainNav">
+        <div class="nav__brand">
+            <a href="index.html" class="nav__logo">PROJECT <span>REUNITE</span></a>
+            <span class="nav__tag">v1.0</span>
+        </div>
+
+        <div class="nav__links">
+            <a href="index.html" class="nav__link nav__link--active">Home</a>
+            <a href="portal.html" class="nav__link">Portal</a>
+            <a href="records.html" class="nav__link">Records</a>
+        </div>
+
+        <div class="nav__status">
+            <span class="status-dot"></span>
+            <span>System Online</span>
+            <span class="nav__divider">·</span>
+            <span class="nav__clock" id="clock">00:00:00</span>
+        </div>
+    </nav>
+
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="hero__bg-grid"></div>
+
+        <div class="hero__content">
+            <p class="hero__subtitle fade-in">AI-Powered Missing Person Identification System</p>
+
+            <h1 class="hero__title fade-in fade-in--delay-1">
+                PROJECT<br><span>REUNITE</span>
+            </h1>
+
+            <p class="hero__tagline fade-in fade-in--delay-2">
+                Finding Identities. Reuniting Families.
+            </p>
+
+            <div class="hero__actions fade-in fade-in--delay-3">
+                <a href="portal.html" class="btn btn--primary btn--lg" id="heroPortalBtn">
+                    <i class="fas fa-arrow-right"></i>
+                    Enter Portal
+                </a>
+                <a href="records.html" class="btn btn--secondary btn--lg" id="heroRecordsBtn">
+                    <i class="fas fa-folder-open"></i>
+                    View Records
+                </a>
+            </div>
+        </div>
+
+        <div class="hero__scroll-hint fade-in fade-in--delay-5">
+            <span>Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+
+    <!-- ===== STATS STRIP ===== -->
+    <section class="stats" id="stats">
+        <div class="stats__grid">
+            <div class="stats__item animate-on-scroll">
+                <span class="stats__number" data-target="1214">0</span>
+                <span class="stats__label">Cases Registered</span>
+            </div>
+            <div class="stats__divider"></div>
+            <div class="stats__item animate-on-scroll">
+                <span class="stats__number" data-target="324">0</span>
+                <span class="stats__label">Matches Found</span>
+            </div>
+            <div class="stats__divider"></div>
+            <div class="stats__item animate-on-scroll">
+                <span class="stats__number" data-target="32">0</span>
+                <span class="stats__label">Cities Covered</span>
+            </div>
+            <div class="stats__divider"></div>
+            <div class="stats__item animate-on-scroll">
+                <span class="stats__number stats__number--percent" data-target="96">0</span>
+                <span class="stats__label">Success Rate</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="features__header animate-on-scroll">
+            <p class="features__overline">Capabilities</p>
+            <h2 class="features__title">Powered by Modern Technology</h2>
+        </div>
+
+        <div class="features__grid">
+            <div class="glass-card features__card animate-on-scroll">
+                <div class="features__icon-wrap">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="features__card-title">AI Matching Engine</h3>
+                <p class="features__card-text">
+                    Advanced facial recognition algorithms identify and match missing persons across our database with high accuracy.
+                </p>
+                <span class="badge badge--accent">Active</span>
+            </div>
+
+            <div class="glass-card features__card animate-on-scroll">
+                <div class="features__icon-wrap">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="features__card-title">Cloud Infrastructure</h3>
+                <p class="features__card-text">
+                    Built on AWS with DynamoDB and S3 for reliable, scalable data storage and retrieval across all regions.
+                </p>
+                <span class="badge badge--success">Connected</span>
+            </div>
+
+            <div class="glass-card features__card animate-on-scroll">
+                <div class="features__icon-wrap">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h3 class="features__card-title">Secure & Encrypted</h3>
+                <p class="features__card-text">
+                    End-to-end encryption, input validation, and strict file verification protect sensitive case data at all times.
+                </p>
+                <span class="badge badge--success">Verified</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== SYSTEM STATUS ===== -->
+    <section class="sys-status" id="sysStatus">
+        <div class="sys-status__grid">
+            <div class="sys-status__item animate-on-scroll">
+                <i class="fas fa-cloud"></i>
+                <div>
+                    <span class="sys-status__name">AWS Cloud</span>
+                    <span class="sys-status__value sys-status__value--ok">Connected</span>
+                </div>
+            </div>
+            <div class="sys-status__item animate-on-scroll">
+                <i class="fas fa-database"></i>
+                <div>
+                    <span class="sys-status__name">DynamoDB</span>
+                    <span class="sys-status__value sys-status__value--ok">Online</span>
+                </div>
+            </div>
+            <div class="sys-status__item animate-on-scroll">
+                <i class="fas fa-microchip"></i>
+                <div>
+                    <span class="sys-status__name">AI Engine</span>
+                    <span class="sys-status__value sys-status__value--ok">Active</span>
+                </div>
+            </div>
+            <div class="sys-status__item animate-on-scroll">
+                <i class="fas fa-lock"></i>
+                <div>
+                    <span class="sys-status__name">Encryption</span>
+                    <span class="sys-status__value sys-status__value--ok">Enabled</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <span class="nav__logo">PROJECT <span>REUNITE</span></span>
+                <p class="footer__text">AI-Powered Missing Person Identification System</p>
+            </div>
+            <div class="footer__links">
+                <a href="portal.html">Investigation Portal</a>
+                <a href="records.html">Saved Records</a>
+            </div>
+            <div class="footer__meta">
+                <span>&copy; 2026 Project Reunite</span>
+                <span class="footer__status">
+                    <span class="status-dot"></span>
+                    All Systems Operational
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

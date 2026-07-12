@@ -1,275 +1,302 @@
+// ==============================================
+// PROJECT REUNITE — INVESTIGATION PORTAL SCRIPT
+// ==============================================
 
-// ===============================
-// LIVE CLOCK
-// ===============================
+document.addEventListener('DOMContentLoaded', () => {
 
-function updateClock(){
-
-    const clock =
-    document.getElementById("clock");
-
-    if(clock){
-
-        const now =
-        new Date();
-
-        clock.innerHTML =
-        now.toLocaleTimeString();
+    // --- Generate Case ID ---
+    const caseIdDisplay = document.getElementById('generatedCaseId');
+    const currentCaseId = generateCaseId();
+    if (caseIdDisplay) {
+        caseIdDisplay.textContent = currentCaseId;
     }
-}
-
-setInterval(updateClock,1000);
-updateClock();
 
 
-// ===============================
-// FACE MATCH PERCENTAGE
-// ===============================
+    // --- Photo Upload: Drag & Drop + Click ---
+    const uploadZone = document.getElementById('uploadZone');
+    const photoInput = document.getElementById('photo');
+    const uploadContent = document.getElementById('uploadContent');
+    const uploadPreview = document.getElementById('uploadPreview');
+    const previewImage = document.getElementById('previewImage');
+    const removePhotoBtn = document.getElementById('removePhoto');
+    const fileNameEl = document.getElementById('fileName');
 
-const matchData = [
+    if (uploadZone && photoInput) {
+        // Click to browse
+        uploadZone.addEventListener('click', (e) => {
+            if (e.target.closest('.upload-zone__remove')) return;
+            photoInput.click();
+        });
 
-    "72%",
-    "84%",
-    "91%",
-    "98%",
-    "MATCH FOUND"
+        // File selected
+        photoInput.addEventListener('change', () => {
+            if (photoInput.files.length > 0) {
+                handleFileSelect(photoInput.files[0]);
+            }
+        });
 
-];
+        // Drag & drop
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('upload-zone--dragover');
+        });
 
-let index = 0;
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('upload-zone--dragover');
+        });
 
-setInterval(()=>{
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('upload-zone--dragover');
+            if (e.dataTransfer.files.length > 0) {
+                photoInput.files = e.dataTransfer.files;
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
 
-    const match =
-    document.getElementById(
-    "matchPercent"
-    );
-
-    if(match){
-
-        match.innerHTML =
-        matchData[index];
-
-        index++;
-
-        if(index >=
-        matchData.length){
-
-            index = 0;
+        // Remove photo
+        if (removePhotoBtn) {
+            removePhotoBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                clearPhotoPreview();
+            });
         }
     }
 
-},2000);
+    function handleFileSelect(file) {
+        const errors = validateFile(file);
+        const photoError = document.getElementById('photoError');
 
+        if (errors.length > 0) {
+            if (photoError) photoError.textContent = errors[0];
+            clearPhotoPreview();
+            return;
+        }
 
-// ===============================
-// STATUS CARD GLOW
-// ===============================
+        if (photoError) photoError.textContent = '';
 
-const cards =
-document.querySelectorAll(
-".status-card"
-);
-
-setInterval(()=>{
-
-    const randomCard =
-    cards[Math.floor(
-    Math.random()*cards.length
-    )];
-
-    if(randomCard){
-
-        randomCard.style.boxShadow =
-        "0 0 25px #00ff66";
-
-        setTimeout(()=>{
-
-            randomCard.style.boxShadow =
-            "none";
-
-        },700);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (previewImage) previewImage.src = e.target.result;
+            if (fileNameEl) fileNameEl.textContent = file.name;
+            if (uploadContent) uploadContent.style.display = 'none';
+            if (uploadPreview) uploadPreview.style.display = 'flex';
+        };
+        reader.readAsDataURL(file);
     }
 
-},2000);
-
-
-// ===============================
-// SEARCH BUTTON
-// ===============================
-
-const searchBtn =
-document.querySelector(
-".search-btn"
-);
-
-if(searchBtn){
-
-    searchBtn.addEventListener(
-    "click",
-
-    ()=>{
-
-        alert(
-        "Searching Database...\n\n" +
-        "AWS CLOUD ACTIVE\n" +
-        "DATABASE ONLINE\n" +
-        "AI MATCHING STARTED"
-        );
-
-        // Later:
-        // window.location.href =
-        // "results.html";
-
+    function clearPhotoPreview() {
+        if (photoInput) photoInput.value = '';
+        if (previewImage) previewImage.src = '';
+        if (fileNameEl) fileNameEl.textContent = '';
+        if (uploadContent) uploadContent.style.display = 'flex';
+        if (uploadPreview) uploadPreview.style.display = 'none';
     }
 
-    );
-}
 
+    // --- Form Validation ---
+    const validationRules = {
+        personName: { required: true, minLength: 2, maxLength: 100 },
+        age: { required: true, min: 0, max: 120 },
+        gender: { required: true },
+        contact: {
+            required: true,
+            pattern: /^[0-9+\-\s()]{7,15}$/,
+            patternMessage: 'Enter a valid phone number'
+        },
+        location: { required: true, minLength: 2, maxLength: 200 },
+        missingDate: { required: true }
+    };
 
-// ===============================
-// MINI CARD GLOW
-// ===============================
+    function validateForm() {
+        let isValid = true;
 
-const miniCards =
-document.querySelectorAll(
-".mini-card"
-);
+        for (const [fieldId, rules] of Object.entries(validationRules)) {
+            const input = document.getElementById(fieldId);
+            const errorEl = document.getElementById(`${fieldId}Error`);
+            if (!input || !errorEl) continue;
 
-setInterval(()=>{
+            const value = input.value.trim();
+            const errors = validateInput(value, rules);
 
-    miniCards.forEach(card=>{
+            if (errors.length > 0) {
+                errorEl.textContent = errors[0];
+                input.classList.add('form-input--error');
+                isValid = false;
+            } else {
+                errorEl.textContent = '';
+                input.classList.remove('form-input--error');
+            }
+        }
 
-        card.style.opacity =
-        Math.random() > 0.5
-        ? "1"
-        : "0.85";
+        return isValid;
+    }
 
+    // Clear error on input
+    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
+        el.addEventListener('input', () => {
+            el.classList.remove('form-input--error');
+            const errorEl = document.getElementById(`${el.id}Error`);
+            if (errorEl) errorEl.textContent = '';
+        });
     });
 
-},1000);
 
+    // --- Form Submit ---
+    const caseForm = document.getElementById('caseForm');
+    const saveBtn = document.getElementById('saveBtn');
 
-// ===============================
-// SYSTEM START
-// ===============================
+    if (caseForm) {
+        caseForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-console.log(
-"PROJECT REUNITE PORTAL LOADED"
-);
-// ===============================
-// SAVE RECORD BUTTON
-// ===============================
+            if (!validateForm()) {
+                showToast('Please fix the errors before saving.', 'error');
+                return;
+            }
 
-const saveBtn =
-document.getElementById("saveBtn");
+            // Disable button
+            saveBtn.classList.add('btn--loading');
+            saveBtn.disabled = true;
 
-if(saveBtn){
-
-    saveBtn.addEventListener("click",()=>{
-
-        const photoFile =
-        document.getElementById("photo").files[0];
-
-        const caseData = {
-
-            caseId:
-            document.getElementById("caseId").value,
-
-            personName:
-            document.getElementById("personName").value,
-
-            age:
-            document.getElementById("age").value,
-
-            gender:
-            document.getElementById("gender").value,
-
-            contact:
-            document.getElementById("contact").value,
-
-            location:
-            document.getElementById("location").value,
-
-            missingDate:
-            document.getElementById("missingDate").value,
-
-            info:
-            document.getElementById("info").value,
-
-            photo: ""
-        };
-
-        if(photoFile){
-
-            const reader =
-            new FileReader();
-
-            reader.onload =
-            function(e){
-
-                caseData.photo =
-                e.target.result;
-
-                let cases =
-                JSON.parse(
-                localStorage.getItem(
-                "savedCases"
-                )) || [];
-
-                cases.push(caseData);
-
-                localStorage.setItem(
-                    "savedCases",
-                    JSON.stringify(cases)
-                );
-
-                window.location.href =
-                "records.html";
+            const caseData = {
+                caseId: currentCaseId,
+                personName: document.getElementById('personName').value.trim(),
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                contact: document.getElementById('contact').value.trim(),
+                location: document.getElementById('location').value.trim(),
+                missingDate: document.getElementById('missingDate').value,
+                info: document.getElementById('info').value.trim(),
+                photo: '',
+                createdAt: new Date().toISOString(),
+                status: 'active'
             };
 
-            reader.readAsDataURL(
-            photoFile
+            // Handle photo
+            const photoFile = photoInput.files[0];
+
+            if (photoFile) {
+                // Try backend upload first
+                try {
+                    const formData = new FormData();
+                    formData.append('photo', photoFile);
+                    Object.entries(caseData).forEach(([key, val]) => {
+                        if (key !== 'photo') formData.append(key, val);
+                    });
+
+                    const result = await apiCall('/api/cases', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    showToast('Case saved to cloud database!', 'success');
+                    addLocalCase({ ...caseData, photo: result.photoUrl || '' });
+
+                    setTimeout(() => {
+                        window.location.href = 'records.html';
+                    }, 1200);
+                    return;
+
+                } catch (err) {
+                    console.warn('Backend unavailable, saving locally:', err.message);
+
+                    // Fallback: save with base64 photo locally
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        caseData.photo = ev.target.result;
+                        addLocalCase(caseData);
+                        showToast('Saved locally (offline mode).', 'warning');
+                        setTimeout(() => {
+                            window.location.href = 'records.html';
+                        }, 1200);
+                    };
+                    reader.readAsDataURL(photoFile);
+                    return;
+                }
+
+            } else {
+                // No photo — try backend then fallback
+                try {
+                    await apiCall('/api/cases', {
+                        method: 'POST',
+                        body: JSON.stringify(caseData)
+                    });
+                    showToast('Case saved to cloud database!', 'success');
+                    addLocalCase(caseData);
+                } catch {
+                    addLocalCase(caseData);
+                    showToast('Saved locally (offline mode).', 'warning');
+                }
+
+                setTimeout(() => {
+                    window.location.href = 'records.html';
+                }, 1200);
+            }
+        });
+    }
+
+
+    // --- Reset Button ---
+    const resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (caseForm) caseForm.reset();
+            clearPhotoPreview();
+
+            // Clear all errors
+            document.querySelectorAll('.form-error').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-input--error').forEach(el =>
+                el.classList.remove('form-input--error')
             );
 
-        }else{
+            showToast('Form cleared.', 'info');
+        });
+    }
 
-            let cases =
-            JSON.parse(
-            localStorage.getItem(
-            "savedCases"
-            )) || [];
 
-            cases.push(caseData);
+    // --- Load Side Panel Stats ---
+    function updateSideStats() {
+        const cases = getLocalCases();
+        const totalEl = document.getElementById('totalCases');
+        const monthEl = document.getElementById('monthCases');
+        const activeEl = document.getElementById('activeCases');
 
-            localStorage.setItem(
-                "savedCases",
-                JSON.stringify(cases)
-            );
+        if (totalEl) totalEl.textContent = cases.length;
 
-            window.location.href =
-            "records.html";
+        if (monthEl) {
+            const now = new Date();
+            const thisMonth = cases.filter(c => {
+                const d = new Date(c.createdAt);
+                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+            });
+            monthEl.textContent = thisMonth.length;
         }
 
-    });
+        if (activeEl) {
+            const active = cases.filter(c => c.status !== 'resolved');
+            activeEl.textContent = active.length;
+        }
+    }
 
-}
+    updateSideStats();
 
-// ===============================
-// SAVED CASES BUTTON
-// ===============================
 
-const recordsBtn =
-document.getElementById("recordsBtn");
+    // --- Check API Health ---
+    async function checkApiHealth() {
+        const badge = document.getElementById('apiStatus');
+        if (!badge) return;
 
-if(recordsBtn){
+        try {
+            await apiCall('/api/health');
+            badge.textContent = 'Connected';
+            badge.style.color = 'var(--success)';
+        } catch {
+            badge.textContent = 'Offline';
+            badge.style.color = 'var(--warning)';
+        }
+    }
 
-    recordsBtn.addEventListener(
-    "click",()=>{
+    checkApiHealth();
 
-        window.location.href =
-        "records.html";
-
-    });
-
-}
+});

@@ -1,166 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Reunite - Investigation Portal</title>
-
-<link rel="stylesheet" href="portal.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Reunite Investigation Portal — Register and search missing person cases.">
+    <title>Investigation Portal — Project Reunite</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-<!-- TOP STATUS BAR -->
-
-<div class="top-bar">
-
-    <div class="project-name">
-        PROJECT REUNITE
-    </div>
-    <button id="recordsBtn" class="records-btn">
-    📁 SAVED CASES
-</button>
-
-    <div class="system-status">
-        <span>🟢 AWS CLOUD ACTIVE</span>
-        <span>🟢 DATABASE ONLINE</span>
-        <span>🟢 AI ENGINE READY</span>
-        <span id="clock">00:00:00</span>
-    </div>
-
-</div>
-
-
-<!-- MAIN CONTAINER -->
-
-<div class="portal-container">
-
-    <!-- LEFT PANEL -->
-
-    <div class="left-panel">
-
-        <h2>INVESTIGATION PORTAL</h2>
-
-        <div class="status-card">
-            <i class="fas fa-cloud"></i>
-            AWS CLOUD CONNECTED
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="mainNav">
+        <div class="nav__brand">
+            <a href="index.html" class="nav__logo">PROJECT <span>REUNITE</span></a>
+            <span class="nav__tag">Portal</span>
         </div>
 
-        <div class="status-card">
-            <i class="fas fa-database"></i>
-            DATABASE ONLINE
+        <div class="nav__links">
+            <a href="index.html" class="nav__link">Home</a>
+            <a href="portal.html" class="nav__link nav__link--active">Portal</a>
+            <a href="records.html" class="nav__link">Records</a>
         </div>
 
-        <div class="status-card">
-            <i class="fas fa-microchip"></i>
-            AI ENGINE ACTIVE
+        <div class="nav__status">
+            <span class="status-dot"></span>
+            <span>System Online</span>
+            <span class="nav__divider">·</span>
+            <span class="nav__clock" id="clock">00:00:00</span>
         </div>
+    </nav>
 
-        <div class="status-card">
-            <i class="fas fa-shield-alt"></i>
-            SYSTEM SECURE
+
+    <!-- ===== PAGE HEADER ===== -->
+    <div class="page-header fade-in">
+        <div class="page-header__inner">
+            <h1 class="page-header__title">Case Registration</h1>
+            <p class="page-header__subtitle">Register a new missing person case. All fields marked with * are required.</p>
         </div>
-
     </div>
 
 
-    <!-- CENTER FORM -->
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="portal-main">
 
-    <div class="form-panel">
+        <!-- FORM PANEL -->
+        <div class="form-card glass-card fade-in fade-in--delay-1">
 
-        <h1>CASE REGISTRATION</h1>
+            <div class="form-card__header">
+                <div class="form-card__badge">
+                    <i class="fas fa-file-circle-plus"></i>
+                    <span>New Case</span>
+                </div>
+                <span class="form-card__id" id="generatedCaseId"></span>
+            </div>
 
-        <div class="form-grid">
+            <form id="caseForm" novalidate>
 
-<input id="caseId" type="text"
-placeholder="Case ID">
+                <!-- Row 1: Name + Age -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="personName">Person Name *</label>
+                        <input type="text" id="personName" class="form-input" placeholder="Full name of missing person" required>
+                        <span class="form-error" id="personNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="age">Age *</label>
+                        <input type="number" id="age" class="form-input" placeholder="Age" min="0" max="120" required>
+                        <span class="form-error" id="ageError"></span>
+                    </div>
+                </div>
 
-<input id="personName" type="text"
-placeholder="Missing Person Name">
+                <!-- Row 2: Gender + Contact -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="gender">Gender *</label>
+                        <select id="gender" class="form-select" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="form-error" id="genderError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact">Contact Number *</label>
+                        <input type="tel" id="contact" class="form-input" placeholder="Phone number" required>
+                        <span class="form-error" id="contactError"></span>
+                    </div>
+                </div>
 
-<input id="age" type="number"
-placeholder="Age">
+                <!-- Row 3: Location + Date -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="location">Last Seen Location *</label>
+                        <input type="text" id="location" class="form-input" placeholder="City, area, or address" required>
+                        <span class="form-error" id="locationError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="missingDate">Missing Since *</label>
+                        <input type="date" id="missingDate" class="form-input" required>
+                        <span class="form-error" id="missingDateError"></span>
+                    </div>
+                </div>
 
-<select id="gender">
-    <option>Select Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-</select>
+                <!-- Photo Upload -->
+                <div class="form-group">
+                    <label class="form-label">Photo</label>
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="photo" accept="image/jpeg,image/png,image/webp" hidden>
+                        <div class="upload-zone__content" id="uploadContent">
+                            <i class="fas fa-cloud-arrow-up"></i>
+                            <p>Drag & drop an image here, or <span class="upload-zone__link">browse</span></p>
+                            <span class="upload-zone__hint">JPEG, PNG, or WebP · Max 5MB</span>
+                        </div>
+                        <div class="upload-zone__preview" id="uploadPreview" style="display:none;">
+                            <img id="previewImage" alt="Preview">
+                            <button type="button" class="upload-zone__remove" id="removePhoto" title="Remove photo">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <span class="upload-zone__filename" id="fileName"></span>
+                        </div>
+                    </div>
+                    <span class="form-error" id="photoError"></span>
+                </div>
 
-<input id="contact" type="tel"
-placeholder="Contact Number">
+                <!-- Additional Info -->
+                <div class="form-group">
+                    <label class="form-label" for="info">Identification Marks / Additional Info</label>
+                    <textarea id="info" class="form-textarea" placeholder="Describe any identifying marks, clothing, or other details..." rows="4"></textarea>
+                </div>
 
-<input id="location" type="text"
-placeholder="Last Seen Location">
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary btn--lg" id="saveBtn">
+                        <i class="fas fa-floppy-disk"></i>
+                        Save Record
+                    </button>
+                    <button type="button" class="btn btn--secondary btn--lg" id="resetBtn">
+                        <i class="fas fa-rotate-left"></i>
+                        Reset
+                    </button>
+                </div>
 
-<input id="missingDate" type="date">
-
-<input id="photo" type="file">
-
-</div>
-
-<textarea id="info"
-placeholder="Identification Marks / Additional Information">
-</textarea>
-
-        <button id="saveBtn" class="search-btn">
-    SAVE RECORD
-</button>
-
-<button id="searchMatchBtn" class="search-btn">
-    SEARCH MATCH
-</button>
-    </div>
-
-
-    <!-- RIGHT PANEL -->
-
-    <div class="right-panel">
-
-        <h2>LIVE STATUS</h2>
-
-        <div class="mini-card">
-            FACE MATCH
-            <h3 id="matchPercent">
-                72%
-            </h3>
+            </form>
         </div>
 
-        <div class="mini-card">
-            ACTIVE CASES
-            <h3>124</h3>
-        </div>
 
-        <div class="mini-card">
-            DATABASE RECORDS
-            <h3>12,450</h3>
-        </div>
+        <!-- SIDE PANEL -->
+        <aside class="side-panel fade-in fade-in--delay-2">
 
-        <div class="mini-card">
-            SUCCESS RATE
-            <h3>96.8%</h3>
-        </div>
+            <div class="side-panel__section">
+                <h3 class="side-panel__title">Quick Stats</h3>
+                <div class="side-panel__stat">
+                    <span class="side-panel__stat-label">Total Cases</span>
+                    <span class="side-panel__stat-value" id="totalCases">0</span>
+                </div>
+                <div class="side-panel__stat">
+                    <span class="side-panel__stat-label">This Month</span>
+                    <span class="side-panel__stat-value" id="monthCases">0</span>
+                </div>
+                <div class="side-panel__stat">
+                    <span class="side-panel__stat-label">Active</span>
+                    <span class="side-panel__stat-value side-panel__stat-value--accent" id="activeCases">0</span>
+                </div>
+            </div>
 
-    </div>
+            <div class="side-panel__section">
+                <h3 class="side-panel__title">System Status</h3>
+                <div class="side-panel__status-item">
+                    <span class="status-dot"></span>
+                    <span>Backend API</span>
+                    <span class="side-panel__status-badge" id="apiStatus">Checking...</span>
+                </div>
+                <div class="side-panel__status-item">
+                    <span class="status-dot"></span>
+                    <span>Database</span>
+                    <span class="side-panel__status-badge">Online</span>
+                </div>
+                <div class="side-panel__status-item">
+                    <span class="status-dot"></span>
+                    <span>Storage</span>
+                    <span class="side-panel__status-badge">Ready</span>
+                </div>
+            </div>
 
-</div>
+            <div class="side-panel__section">
+                <a href="records.html" class="btn btn--secondary" style="width:100%;">
+                    <i class="fas fa-folder-open"></i>
+                    View All Records
+                </a>
+            </div>
 
+        </aside>
 
-<!-- FLOATING PARTICLES -->
+    </main>
 
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
-
-
-<script src="portal.js"></script>
-
+    <script src="shared.js"></script>
+    <script src="portal.js"></script>
 </body>
 </html>
